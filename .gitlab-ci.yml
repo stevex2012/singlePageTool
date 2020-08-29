@@ -1,0 +1,38 @@
+image: sakyavarro/docker:19.03.11-awscli
+
+variables:
+  STAGING_SERVER_HOST: test.firmoo.com
+  STAGING_SERVER_USER: ec2-user
+  PROD_SERVER_USER: ec2-user
+  CONTAINER_IMAGE: 700798419914.dkr.ecr.us-west-1.amazonaws.com/firmoo/page-tool
+  GIT_DEPTH: 1000
+  DOCKER_TLS_CERTDIR: ""
+
+stages:
+  - build
+  - deploy
+
+# test 测试版
+build:
+  stage: build
+  only:
+    - master
+  script:
+    - $(aws ecr get-login --no-include-email --region us-west-1)
+    - docker build  --tag $CONTAINER_IMAGE:latest .
+    - docker push $CONTAINER_IMAGE:latest
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    - apk update && apk add bash
+    - 'which ssh-agent || (apk add openssh-client)'
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - ssh-keyscan $STAGING_SERVER_HOST >> ~/.ssh/known_hosts
+    - bash -c "ssh-add <(echo '$STAGING_SSH_KEY')"
+    - ssh -o StrictHostKeyChecking=no $STAGING_SERVER_USER@$STAGING_SERVER_HOST 'cd /home/ec2-user/project && bash redeploy_page_tools.sh'
+    - curl "https://oapi.dingtalk.com/robot/send?access_token=fb967a3362752a1417f547b32e6523e98a8d8aacb5db6ae06939776d50c95bc9" -XPOST -H 'content-type:application/json' -d '{"msgtype":"markdown","markdown":{"title":"专题页工具部署完成","text":"#### 专题页工具部署完成 @18725873459 @13148828764 \n> 分支 - '"${CI_COMMIT_REF_NAME}"' \n> \n> 提交 - '"${CI_COMMIT_MESSAGE}"' \n \n [http://52.9.161.206:3001](http://52.9.161.206:3001/) \n"},"at":{"atMobiles":["18725873459", "13148828764"],"isAtAll":false}}'
+

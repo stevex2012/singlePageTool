@@ -1,0 +1,18 @@
+{
+  "apps":[
+    {
+      "name": "page-tools-server",
+      "script": "./bin/www",
+      "cwd": "./",
+      "error_file": "./logs/pm2-error.log",
+      "out_file": "./logs/pm2-daily.log",
+      "env": {
+        "database": "test",
+        "user" : "tech_chengmingxue",
+        "password" : "cc520520",
+        "host" : "52.9.161.206",
+        "port" : "3306"
+      }
+    }
+  ]
+}

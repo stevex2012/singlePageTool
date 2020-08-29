@@ -1,0 +1,12 @@
+.idea
+/server/node_modules
+/client/node_modules
+
+/server/exportModel.sh
+/server/.env
+/server/.DS_Store
+/server/logs/*
+
+npm-debug.log*
+*.missing.json
+.DS_Store

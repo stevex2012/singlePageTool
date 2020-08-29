@@ -1,0 +1,79 @@
+@font-face {
+	font-family:"Roboto-Regular";
+	src:url(./fonts/Ubuntu-Regular.eot);
+	src:url(./fonts/Ubuntu-Regular.eot?#iefix) format('embedded-opentype'),url(./fonts/Ubuntu-Regular.woff2) format('woff2'),url(./fonts/Ubuntu-Regular.woff) format('woff'),url(./fonts/Ubuntu-Regular.ttf) format('truetype'),url(./fonts/Ubuntu-Regular.svg#glyphicons_halflingsregular) format('svg');
+	font-display: swap;
+}
+@font-face {
+	font-family:'Roboto-Light';
+	src:url(./fonts/Ubuntu-Light.eot);
+	src:url(./fonts/Ubuntu-Light.eot?#iefix) format('embedded-opentype'),url(./fonts/Ubuntu-Light.woff2) format('woff2'),url(./fonts/Ubuntu-Light.woff) format('woff'),url(./fonts/Ubuntu-Light.ttf) format('truetype'),url(./fonts/Ubuntu-Light.svg#glyphicons_halflingsregular) format('svg');
+	font-display: swap;
+}
+@font-face {
+	font-family:'Roboto-Medium';
+	src:url(./fonts/Ubuntu-Medium.eot);
+	src:url(./fonts/Ubuntu-Medium.eot?#iefix) format('embedded-opentype'),url(./fonts/Ubuntu-Medium.woff2) format('woff2'),url(./fonts/Ubuntu-Medium.woff) format('woff'),url(./fonts/Ubuntu-Medium.ttf) format('truetype'),url(./fonts/Ubuntu-Medium.svg#glyphicons_halflingsregular) format('svg');
+	font-display: swap;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a{
+  text-decoration: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.my-pagination .rc-pagination-item-active {
+  background-color: #21AC4E;
+  border-color: #21AC4E;
+}
+.my-pagination .rc-pagination-item:hover{
+  border-color: #21AC4E;
+  color: #21AC4E;
+}
+.my-pagination .rc-pagination-item:hover a{
+  color: #21AC4E;
+}
+
+.my-pagination .rc-pagination-item-active:hover a{
+  color: #fff;
+}
+
+
+.firmoo-tab-list{
+  display: flex;
+  padding:0;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+.firmoo-tab{
+  list-style: none;
+  padding: 10px;
+}
+
+.firmoo-tab-select{
+  font-weight: bold;
+  position:relative;
+}
+.firmoo-tab-select::after{
+  content:' ';
+  position:absolute;
+  height:2px;
+  width:20px;
+  background:#333;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+}

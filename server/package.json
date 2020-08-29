@@ -1,0 +1,32 @@
+{
+  "name": "firmoo-page-tools-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "env-cmd ./.env node ./bin/www",
+    "buildPage": "cd .. && cd ./client && webpack --config ./webpack.config.js",
+    "test": "cd .. && cd ./client && node ./testxxx.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cross-env": "^7.0.2",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.3",
+    "env-cmd": "^8.0.2",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "http-proxy-middleware": "^1.0.4",
+    "jade": "^1.11.0",
+    "morgan": "^1.9.1",
+    "mysql": "^2.18.1",
+    "sequelize-auto": "^0.4.29",
+    "sequelize-cli": "^5.5.1",
+    "tedious": "^8.3.0",
+    "webpack": "^4.43.0"
+  },
+  "devDependencies": {
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.11",
+    "webpack-cli": "^3.3.11"
+  }
+}
