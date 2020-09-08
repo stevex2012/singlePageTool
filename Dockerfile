@@ -1,4 +1,4 @@
-FROM 700798419914.dkr.ecr.us-west-1.amazonaws.com/firmoo/node:10.20-alpine-pm2
+FROM docker image
 
 WORKDIR /app
 
